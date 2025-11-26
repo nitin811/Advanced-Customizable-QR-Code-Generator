@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>QR Code Generator</h2>
+
+        <div class="input-group">
+            <input type="text" id="input" placeholder="Enter Text or URL">
+        </div>
+
+        <div class="options-row">
+            <div class="option-group">
+                <label for="qrSize">Size:</label>
+                <select id="qrSize">
+                    <option value="150x150" selected>150x150</option>
+                    <option value="250x250">250x250</option>
+                    <option value="350x350">350x350</option>
+                </select>
+            </div>
+            <div class="option-group">
+                <label for="fgColor">QR Color:</label>
+                <input type="color" id="fgColor" value="#000000">
+            </div>
+            <div class="option-group">
+                <label for="bgColor">BG Color:</label>
+                <input type="color" id="bgColor" value="#ffffff">
+            </div>
+        </div>
+
+        <button id="generateQR">Generate QR</button>
+
+        <div class="qr-output">
+            <div id="loading" class="hidden"></div>
+            <img src="" alt="Generated QR Code" id="imageQR" class="hidden">
+            <p id="message" class="hidden">Enter content and generate a QR code.</p>
+        </div>
+
+        <div class="download-options hidden" id="downloadOptions">
+            <label for="downloadFormat">Format:</label>
+            <select id="downloadFormat">
+                <option value="png" selected>PNG</option>
+                <option value="jpg">JPG</option>
+            </select>
+            <button id="downloadQR">Download QR</button>
+        </div>
+        <p class="credit">Made by <strong>Nitin Tiwari</strong></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

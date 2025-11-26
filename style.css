@@ -1,0 +1,196 @@
+:root {
+    --bg-dark: #1e1e1e;
+    --card-dark: #2c2c2c;
+    --text-light: #f0f0f0;
+    --primary-color: #00bcd4;
+    /* Cyan */
+    --hover-scale: 0.98;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--bg-dark), #0a0a0a);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-light);
+}
+
+.container {
+    background-color: var(--card-dark);
+    width: 95%;
+    /* Responsive width */
+    max-width: 500px;
+    padding: 20px;
+    /* Reduced padding for mobile */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin: 20px 0;
+    /* Add margin for vertical spacing on small screens */
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* Input Styling */
+.input-group {
+    margin-bottom: 15px;
+}
+
+#input {
+    width: 100%;
+    padding: 12px 10px;
+    /* Better padding for mobile tapping */
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #333;
+    color: var(--text-light);
+}
+
+/* Options Row (Key for Responsiveness) */
+.options-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 8px;
+    /* Reduced gap */
+    margin-bottom: 20px;
+}
+
+.option-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    /* Ensures groups share space equally */
+    min-width: 70px;
+    /* Prevents groups from getting too small */
+}
+
+/* Color inputs look better aligned in the center */
+#fgColor,
+#bgColor {
+    margin-top: 5px;
+    width: 35px;
+    height: 30px;
+}
+
+#qrSize {
+    margin-top: 5px;
+    width: 100%;
+    padding: 5px 2px;
+}
+
+/* Button Styling */
+#generateQR {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: var(--bg-dark);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    border: none;
+}
+
+/* QR Output Area */
+.qr-output {
+    min-height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    border: 2px dashed #444;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#imageQR {
+    width: auto;
+    height: auto;
+    max-width: none;
+}
+
+
+/* Download Options Group */
+.download-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-top: 1px solid #444;
+}
+
+#downloadFormat {
+    padding: 5px 2px;
+}
+
+#downloadQR {
+    padding: 8px 15px;
+    background-color: var(--primary-color);
+    color: var(--bg-dark);
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- RESPONSIVENESS (Media Queries) --- */
+
+/* For smaller phones (width < 380px) */
+@media (max-width: 380px) {
+    .options-row {
+        /* Stack the color inputs vertically to save space */
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .option-group {
+        width: 100%;
+        align-items: flex-start;
+        flex: none;
+        /* Disable flex-grow */
+    }
+
+    #qrSize,
+    #fgColor,
+    #bgColor {
+        width: 100%;
+        /* Full width for better tapping */
+        margin-top: 5px;
+    }
+
+    .download-options {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #downloadQR {
+        width: 100%;
+    }
+}
+
+.credit {
+    margin-top: 20px;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    font-style: italic;
+}
+.credit strong {
+    color: var(--primary-color);
+}
