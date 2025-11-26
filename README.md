@@ -7,7 +7,7 @@
 You can try the live version of the project here:
 
 🌐 **Live URL:**  
-https://advanced-customizabl-git-e08d69-nitin-tiwaris-projects-1725a35d.vercel.app/
+[Click Me!!](https://advanced-customizable-qr-code-gener.vercel.app/)
 
 This demo showcases:
 - Adjustable QR Code Size  
