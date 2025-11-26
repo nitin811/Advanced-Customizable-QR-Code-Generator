@@ -59,7 +59,7 @@ function generateQR() {
     updateUIState('loading');
 
     // Construct the API URL with all dynamic parameters
-    const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}&data=${encodeURIComponent(dataValue)}&color=${fgColor}&bgcolor=${bgColor}&nocache=${Date.now()}`;
+    const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}&data=${encodeURIComponent(dataValue)}&color=${fgColor}&bgcolor=${bgColor}&format=png&nocache=${Date.now()}`;
 
     // 2. Set up the image loading process
 
@@ -95,7 +95,14 @@ function downloadQR() {
     }
 
     // Use the currently generated image source and append the desired format
-    const downloadUrl = imageQR.src.split('&format=')[0] + `&format=${format}`;
+    let downloadUrl = imageQR.src;
+
+    // Replace the existing format OR append new one
+    if (downloadUrl.includes("&format=")) {
+        downloadUrl = downloadUrl.replace(/format=\w+/, `format=${format}`);
+    } else {
+        downloadUrl += `&format=${format}`;
+    }
 
     const link = document.createElement('a');
     link.href = downloadUrl;
