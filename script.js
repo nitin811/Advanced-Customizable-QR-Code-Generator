@@ -87,33 +87,40 @@ function generateQR() {
  */
 function downloadQR() {
     const dataValue = input.value.trim();
-    const format = downloadFormatSelect.value; // Get selected format (png or jpg)
+    const format = downloadFormatSelect.value; // png or jpg
 
     if (!imageQR.src || imageQR.classList.contains('hidden')) {
-        updateUIState('error', "Please generate a QR code before attempting to download.");
+        updateUIState('error', "Please generate a QR first.");
         return;
     }
 
-    // Use the currently generated image source and append the desired format
+    // Make sure final URL contains correct format
     let downloadUrl = imageQR.src;
 
-    // Replace the existing format OR append new one
-    if (downloadUrl.includes("&format=")) {
+    if (downloadUrl.includes("format=")) {
         downloadUrl = downloadUrl.replace(/format=\w+/, `format=${format}`);
     } else {
         downloadUrl += `&format=${format}`;
     }
 
-    const link = document.createElement('a');
-    link.href = downloadUrl;
-
-    // Set the filename based on the input data and selected format
-    link.download = `qr-code-${dataValue.substring(0, 20).replace(/[^a-z0-9]/gi, '_')}.${format}`;
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Create a Blob-based download to force save in all devices
+    fetch(downloadUrl)
+        .then(res => res.blob())
+        .then(blob => {
+            const blobUrl = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.download = `qr-code-${Date.now()}.${format}`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.URL.revokeObjectURL(blobUrl);
+        })
+        .catch(() => {
+            updateUIState('error', "Download failed. Try again.");
+        });
 }
+
 
 // Event Listeners
 btnGenerateQR.addEventListener("click", generateQR);
