@@ -2,6 +2,19 @@
 
 **Project Summary:** A modern, feature-rich web application built to generate dynamically customized QR codes using a third-party API. The project demonstrates strong proficiency in vanilla JavaScript for state management, API parameter serialization, and advanced UI/UX controls.
 
+## 🔗 Live Demo
+
+You can try the live version of the project here:
+
+🌐 **Live URL:**  
+https://advanced-customizabl-git-e08d69-nitin-tiwaris-projects-1725a35d.vercel.app/
+
+This demo showcases:
+- Adjustable QR Code Size  
+- Custom Foreground & Background Colors  
+- Instant QR Preview  
+- PNG / JPG Download Support  
+
 
 * **Complex API Parameterization:** Implemented logic to serialize **four dynamic user-defined parameters** (data, size, foreground color, and background color) into a single API request URL, showcasing control over complex data structures.
 * **Asynchronous State Management (Loaders & Error Handling):** Developed a comprehensive `updateUIState` function to manage the application's visual state (`initial`, `loading`, `success`, `error`), providing animated feedback (CSS loading spinner) and graceful failure messages.
